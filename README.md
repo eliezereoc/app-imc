@@ -1,4 +1,4 @@
-# app-imc
+# Calculadora de IMC
 
 ## Project setup
 ```
