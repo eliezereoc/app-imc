@@ -1,5 +1,7 @@
 # Calculadora de IMC
 
+## [DEMO](https://app-imc.vercel.app/)
+
 ## Project setup
 ```
 npm install
