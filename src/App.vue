@@ -3,45 +3,45 @@
     <h1 class="titles__h1">Digito seu peso e altura para calcular o IMC</h1>
     <fieldset>
       <legend>
-        <h2 class="titles__h2"> Cálculo do IMC </h2>
+        <h2 class="titles__h2">Cálculo do IMC</h2>
       </legend>
 
       <div class="templates__imc">
         <span class="p-float-label">
-          <InputText id="input-weight" type="text" v-model="weight" />
+          <InputText id="input-weight" type="text" v-model="weight" :disabled="imc"/>
           <label for="input-weight">Peso</label>
         </span>
       </div>
 
       <div class="templates__imc">
         <span class="p-float-label">
-          <InputText id="input-weight" type="text" v-model="heigth" />
+          <InputText id="input-weight" type="text" v-model="heigth" :disabled="imc"/>
           <label for="input-weight">Altura</label>
         </span>
       </div>
 
-      <div class="templates__imc">
-        <Button class="p-button-success bt" label="Calcular" @click="calculate()" />
-        <Button class="p-button-warning bt" label="limpar" @click="limpar()" />
+      <div v-if="!imc" class="templates__imc">
+        <Button class="p-button-success bt" label="Calcular" @click="calculate"  :disabled="!weight"/>
+        <Button class="p-button-warning bt" label="limpar" @click="clear" :disabled="!weight"/>
       </div>
     </fieldset>
-
 
     <fieldset>
       <legend>
-        <h2 class="titles__h2">Resultado </h2>  
+        <h2 class="titles__h2">Resultado</h2>
       </legend>
-      <div class="templates__resultado">
-        <p>Seu IMC é: {{ imc }} </p>
-        <p>Classificação: {{ classification }} </p>
+      <div v-if="imc" class="templates__resultado">
+        <p>Seu IMC é: {{ imc }}</p>
+        <p>Classificação: {{ classification }}</p>
+      </div>
+      <div v-else class="templates__resultado">
+        <p>Digito seu peso e altura e clique no botão calcular.</p>
+      </div>
+      <div v-if="imc">
+        <Button class="p-button-success bt" label="Novo Calculo" @click="clear" />         
       </div>
     </fieldset>
-
   </div>
-
-
-
-
 </template>
 
 <script>
@@ -51,39 +51,39 @@ export default {
       heigth: null,
       weight: null,
       imc: null,
-      classification: ''
+      classification: "",
     };
   },
   methods: {
     calculate: function () {
       this.imc = (this.weight / (this.heigth * this.heigth)).toFixed(2);
-      if(this.imc < 18.8) {
-        this.classification = 'Magreza';
+      if (this.imc < 18.8) {
+        this.classification = "Magreza";
       } else {
-        if(this.imc >= 18.5 && this.imc < 25){
-          this.classification = 'Normal';
+        if (this.imc >= 18.5 && this.imc < 25) {
+          this.classification = "Normal";
         } else {
-          if(this.imc >= 25 && this.imc < 30){
-            this.classification = 'Sobrepeso';
+          if (this.imc >= 25 && this.imc < 30) {
+            this.classification = "Sobrepeso";
           } else {
-            if(this.imc >=30 && this.imc <= 40){
-              this.classification = 'Obesidade'
+            if (this.imc >= 30 && this.imc <= 40) {
+              this.classification = "Obesidade";
             } else {
-              this.classification = 'Obesidade Grave'
+              this.classification = "Obesidade Grave";
             }
           }
         }
       }
-      console.log(`Altura: ${this.heigth}`);
-      console.log(`Peso: ${this.weight}`);
-      console.log(`IMC: ${this.imc}`);
+      // console.log(`Altura: ${this.heigth}`);
+      // console.log(`Peso: ${this.weight}`);
+      // console.log(`IMC: ${this.imc}`);
     },
-    clear: function() {
+    clear: function () {
       this.heigth = null;
       this.weight = null;
       this.imc = null;
-      this.classification = '' 
-    }
+      this.classification = "";
+    },
   },
 };
 </script>
@@ -106,7 +106,6 @@ export default {
 .templates__imc {
   margin-top: 2rem;
   padding-left: 1rem;
-  
 }
 
 .templates__imc .bt {
@@ -119,6 +118,7 @@ export default {
 
 .titles__h1 {
   font-size: 2rem;
+  text-align: center;
 }
 
 .titles__h2 {
