@@ -1,17 +1,89 @@
 <!DOCTYPE html>
 <html lang="">
-  <head>
-    <meta charset="utf-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width,initial-scale=1.0">
-    <link rel="icon" href="<%= BASE_URL %>favicon.ico">
-    <title><%= htmlWebpackPlugin.options.title %></title>
-  </head>
-  <body>
-    <noscript>
-      <strong>We're sorry but <%= htmlWebpackPlugin.options.title %> doesn't work properly without JavaScript enabled. Please enable it to continue.</strong>
-    </noscript>
-    <div id="app"></div>
-    <!-- built files will be auto injected -->
-  </body>
+
+<head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width,initial-scale=1.0">
+  <link rel="icon" href="<%= BASE_URL %>favicon.ico">
+  <title>
+    <%= htmlWebpackPlugin.options.title %>
+  </title>
+  <style>
+    html{ margin: 0 auto; }
+    
+    body {
+      margin: 0 auto;
+    }
+
+    footer {
+      background-color: #3e3e3e;
+      background-color: lightgrey;
+      /* color: lightgrey; */
+      color: black;
+      padding: 20px 50px;
+      display: flex;
+      flex-flow: row nowrap;
+      justify-content: space-between;
+      align-items: center;   
+    }
+
+    footer #footer__social-medias .footer__social-medias_icons {
+      max-width: 40px;
+      height: auto;
+    }
+
+    footer #footer__social-medias a {
+      text-decoration: none;
+    }
+
+    footer #footer__email-phone p {
+      margin: 0;
+    }
+
+    footer #footer__email-phone p a{
+      text-decoration: none;
+      color: black;
+    }
+  </style>
+</head>
+
+<body>
+  <!-- <noscript>
+    <strong>We're sorry but <%= htmlWebpackPlugin.options.title %> doesn't work properly without JavaScript enabled.
+        Please enable it to continue.</strong>
+  </noscript> -->
+  <div id="app"></div>
+  <!-- built files will be auto injected -->
+
+  <footer id="footer">
+    <div id="footer__social-medias">
+      <a href="http://github.com/eliezereoc" target="_blank" rel="noopener noreferrer">
+        <img class="footer__social-medias_icons" src="img/github.png">
+      </a>
+      <a href="https://linkedin.com/in/eliezer-oliveira-cardoso-260354165" target="_blank" rel="noopener noreferrer">
+        <img class="footer__social-medias_icons" src="img/linkedin.png">
+      </a>
+      <a href="https://www.facebook.com/eliezer.oliveira.7731247" target="_blank" rel="noopener noreferrer">
+        <img class="footer__social-medias_icons" src="img/facebook.png">
+      </a>
+      <a href="https://www.instagram.com/eliezer_oc/" target="_blank" rel="noopener noreferrer">
+        <img class="footer__social-medias_icons" src="img/instagram.png">
+      </a>
+    </div>
+    <div id="footer__email-phone">
+      <p>Email: <a href="mailto:eliezeroc@gmail.com">eliezeroc@gmail.com</a></p>
+    </div>
+    <div id="footer__copyrights">
+      <p>Eliezer de Oliveira Cardoso &copy;
+        <script>
+          document.write(new Date().getFullYear());
+        </script>
+        - Todos os direitos reservados
+      </p>
+    </div>
+  </footer>
+  
+</body>
+
 </html>
