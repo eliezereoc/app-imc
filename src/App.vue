@@ -169,4 +169,33 @@ export default {
   font-size: 1.1rem;  
   text-align: justify;
 }
+
+
+
+
+@media (max-width: 1024px) {
+
+  .templates {
+    display: flex;
+    align-items: center;
+    flex-flow: column wrap;
+    margin-left: 15px;
+    margin-right: 15px;
+    padding-bottom: 100px;   
+  }
+  
+  #footer {
+    flex-flow: column wrap;
+  }
+  #footer #footer__email-phone {
+    text-align: center;
+  }
+  #footer #footer__copyrights {
+    text-align: center;
+  }  
+}
+ 
+
+
+
 </style>
