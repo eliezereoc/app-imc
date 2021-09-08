@@ -41,6 +41,42 @@
         <Button class="p-button-success bt" label="Novo Calculo" @click="clear" />         
       </div>
     </fieldset>
+
+    <div class="templates__texto-apoio">
+      <h2>Definição do IMC </h2>
+      <p>O Índice de Massa Corporal (IMC) é utilizado para medir a relação entre peso e altura em pessoas adultas. 
+        O cálculo se dá pela fórmula: IMC = Peso (em Kg) / Altura (em m)².
+      </p>
+      <p>Em indivíduos adultos com idade maior ou igual a vinte anos e menores que sessenta anos, 
+        não são aplicáveis cálculos adicionais para a compreensão dos valores resultantes do cálculo do IMC. 
+        Sendo assim, para definir a condição nutricional do indivíduo utiliza-se o valor bruto do IMC apurado pela formula. 
+      </p>
+      <p>
+        A categorização nutricional em pessoas adultas se resulta pelo montante cru obtido no cálculo do IMC. 
+        Assim, são definidos três faixas para classificar o estado nutricional do indivíduo. 
+      </p>       
+      <p> 
+        <b>São elas:</b>
+        <ul>
+          <li> <b>IMC menor que 18,5:</b> adulto a baixo do peso.</li>
+          <li> <b>IMC maior ou igual a 18,5 e menor que 25,0:</b> adulto com peso satisfatório (eutrófico).</li>
+          <li> <b>IMC maior ou igual a 25,0 e menor que 30,0:</b> adulto com sobrepeso.</li>
+          <li> <b>IMC maior ou igual a 30,0:</b> adulto com obesidade.</li>
+        </ul>
+      </p>
+      <p>
+        <b><i>Atenção</i></b> <br>
+        O cálculo do índice de massa corporal não indica o excesso de gordura corporal, 
+        pode ocorrer que o valor está sendo atribuído a massa muscular, o que ocorre com frequência em atletas. 
+        Dessa forma, o IMC não deve ser utilizado para avaliar a composição corporal do avaliado. 
+      </p>
+      <figcaption><b>Fonte:</b> 
+        <cite>
+          <a href="http://tabnet.datasus.gov.br/cgi-win/SISVAN/CNV/notas_sisvan.html" target="_blank">
+          SISVAN - Sistema de Vigilância Alimentar e Nutricional</a>
+        </cite>  
+      </figcaption>
+    </div>
   </div>
 </template>
 
@@ -58,22 +94,20 @@ export default {
     calculate: function () {
       let altura = this.heigth.replace(',','.');
 
-      this.imc = (this.weight / (altura * altura)).toFixed(2);
+      this.imc = (this.weight / (altura * altura)).toFixed(1);
       
-      if (this.imc < 18.8) {
-        this.classification = "Magreza";
+      if (this.imc < 18.5) {
+        this.classification = "Peso abaixo do indicado";
       } else {
         if (this.imc >= 18.5 && this.imc < 25) {
-          this.classification = "Normal";
+          this.classification = "Peso satisfatório (eutrófico)";
         } else {
           if (this.imc >= 25 && this.imc < 30) {
             this.classification = "Sobrepeso";
           } else {
-            if (this.imc >= 30 && this.imc <= 40) {
+            if (this.imc >= 30 ) {
               this.classification = "Obesidade";
-            } else {
-              this.classification = "Obesidade Grave";
-            }
+            } 
           }
         }
       }
@@ -128,5 +162,10 @@ export default {
 .templates__resultado {
   font-size: 1.2rem;
   font-weight: 700;
+}
+
+.templates__texto-apoio {
+  font-size: 1.2rem;  
+  text-align: justify;
 }
 </style>
