@@ -77,7 +77,7 @@
         </cite>  
       </figcaption>
     </div>
-  </div>
+  </div> 
 </template>
 
 <script>
@@ -135,6 +135,7 @@ export default {
   /* flex-flow: row nowrap; */
   max-width: 1200px;
   margin: 0 auto;
+  padding-bottom: 100px;
 }
 
 .templates__imc {
@@ -165,7 +166,7 @@ export default {
 }
 
 .templates__texto-apoio {
-  font-size: 1.2rem;  
+  font-size: 1.1rem;  
   text-align: justify;
 }
 </style>
