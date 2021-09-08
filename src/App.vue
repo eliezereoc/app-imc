@@ -15,7 +15,7 @@
 
       <div class="templates__imc">
         <span class="p-float-label">
-          <InputText id="input-weight" type="text" v-model="heigth" :disabled="imc"/>
+          <InputText id="input-weight" type="text" v-model="heigth" :disabled="imc" pattern="^\d{1,7}(,\d{1,3})?$"/>
           <label for="input-weight">Altura</label>
         </span>
       </div>
@@ -51,12 +51,15 @@ export default {
       heigth: null,
       weight: null,
       imc: null,
-      classification: "",
+      classification: '',
     };
   },
   methods: {
     calculate: function () {
-      this.imc = (this.weight / (this.heigth * this.heigth)).toFixed(2);
+      let altura = this.heigth.replace(',','.');
+
+      this.imc = (this.weight / (altura * altura)).toFixed(2);
+      
       if (this.imc < 18.8) {
         this.classification = "Magreza";
       } else {
@@ -74,17 +77,14 @@ export default {
           }
         }
       }
-      // console.log(`Altura: ${this.heigth}`);
-      // console.log(`Peso: ${this.weight}`);
-      // console.log(`IMC: ${this.imc}`);
     },
     clear: function () {
       this.heigth = null;
       this.weight = null;
       this.imc = null;
       this.classification = "";
-    },
-  },
+    } 
+  }
 };
 </script>
 
